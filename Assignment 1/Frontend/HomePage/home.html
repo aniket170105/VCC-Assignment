@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laundry Service</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        const isUserLogeedIn = window.localStorage.getItem('jwtToken');
+        if(isUserLogeedIn) {
+            window.location.href = '../UserDashboard/userDashboard.html';
+        }
+
+        const isAdminLoggedIn = sessionStorage.getItem('jwtTokenAdmin');
+        if(isAdminLoggedIn) {
+            window.location.href = '../AdminDashboard/adminDashboard.html';
+        }
+    </script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-text">Online Laundry</span>
+        </div>
+        <nav class="nav-links">
+            <a href="../HomePage/home.html" class="nav-item">Home</a>
+            <a href="../SignUpPage/signup.html" class="nav-item">Sign Up</a>
+            <a href="../LoginPage/login.html" class="nav-item">Login</a>
+            <a href="../AdminLoginPage/adminLogin.html" class="nav-item">Admin</a>
+        </nav>
+    </header>
+
+    <main class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Freshen up your wardrobe - the smart choice for busy students!</h1>
+                <!-- <p class="hero-description">
+                    Copper mug try-hard pitchfork pour-over freegan heirloom neutral air plant cold-pressed tacos.
+                </p> -->
+                <div class="hero-buttons">
+                    <button class="btn btn-signup">
+                        <a href="../SignUpPage/signup.html" style="text-decoration: none; color: white;">Sign Up</a>
+                    </button>
+                    <button class="btn btn-login">
+                        <a href="../LoginPage/login.html" style="text-decoration: none; color: white;">Login</a>
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="washing_machine.avif" alt="Laundry Machines">
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2023 Online Laundry IITJ</p>
+            <div class="social-links">
+                <a href="#" class="social-icon">Facebook</a>
+                <a href="#" class="social-icon">Twitter</a>
+                <a href="#" class="social-icon">Instagram</a>
+                <a href="#" class="social-icon">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

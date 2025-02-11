@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Laundry</title>
+  <link rel="stylesheet" href="userSubmit.css">
+  <script>
+      const userToken = window.localStorage.getItem('jwtToken');
+      if(userToken){
+        console.log('user exists');
+      }
+      else{
+        window.location.href = '../LoginPage/login.html';
+      }
+  </script>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Submit Laundry</h2>
+    <form id="laundryForm">
+      <!-- Message Input -->
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" rows="3" placeholder="Enter your message"></textarea>
+      </div>
+
+      <!-- Shirt Section -->
+      <div class="form-group">
+        <label for="shirt-count">Shirt:</label>
+        <input type="number" id="shirt-count" placeholder="Enter number of shirts">
+      </div>
+      <div class="form-group">
+        <label for="shirt-photo">Upload your Shirt photos:</label>
+        <input type="file" id="shirt-photo" multiple accept="image/*">
+        <div id="shirt-file-list"></div> <!-- Div to display selected shirt files -->
+      </div>
+
+      <!-- Pant Section -->
+      <div class="form-group">
+        <label for="pant-count">Pant:</label>
+        <input type="number" id="pant-count" placeholder="Enter number of pants">
+      </div>
+      <div class="form-group">
+        <label for="pant-photo">Upload your Pant photos:</label>
+        <input type="file" id="pant-photo" multiple accept="image/*">
+        <div id="pant-file-list"></div> <!-- Div to display selected pant files -->
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-group">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="userSubmit.js"></script>
+</body>
+</html>

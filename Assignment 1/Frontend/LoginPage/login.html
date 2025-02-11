@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laundry Service</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        const isUserLogeedIn = window.localStorage.getItem('jwtToken');
+        if(isUserLogeedIn) {
+            window.location.href = '../UserDashboard/userDashboard.html';
+        }
+
+        const isAdminLoggedIn = sessionStorage.getItem('jwtTokenAdmin');
+        console.log(isAdminLoggedIn);
+        if(isAdminLoggedIn) {
+            window.location.href = '../AdminDashboard/adminDashboard.html';
+        }
+    </script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-text">Online Laundry</span>
+        </div>
+        <nav class="nav-links">
+            <a href="../HomePage/home.html" class="nav-item">Home</a>
+            <a href="../SignUpPage/signup.html" class="nav-item">Sign Up</a>
+            <a href="../LoginPage/login.html" class="nav-item">Login</a>
+            <a href="../AdminLoginPage/adminLogin.html" class="nav-item">Admin</a>
+        </nav>
+    </header>
+
+    <main class="hero-section">
+        <div class="hero-text">
+            <h1>"Welcome back"</h1>
+            <p>"Welcome back to our online laundry service! We're excited to have you back and to continue providing you with the highest quality laundry service available."</p>
+        </div>
+        <div class="hero-form">
+            <h3>Log In</h3>
+            <form id = "login-form">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </main>
+    <script src="login.js"></script>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2023 Online Laundry IITJ</p>
+            <div class="social-links">
+                <a href="#" class="social-icon">Facebook</a>
+                <a href="#" class="social-icon">Twitter</a>
+                <a href="#" class="social-icon">Instagram</a>
+                <a href="#" class="social-icon">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

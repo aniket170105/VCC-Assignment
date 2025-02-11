@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update User Info</title>
+    <link rel="stylesheet" href="updateInfo.css">
+    <script>
+      const userToken = window.localStorage.getItem('jwtToken');
+      if(userToken){
+        console.log('user exists');
+      }
+      else{
+        window.location.href = '../LoginPage/login.html';
+      }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Update User Info</h2>
+        <form id="updateInfoForm">
+            
+          <div class="form-group">
+            <label for="name">New Name:</label>
+            <textarea id="name" rows="1" placeholder="Enter Your New Name" required></textarea>
+          </div>
+    
+          
+          <div class="form-group">
+            <label for="hostel">New Hostel:</label>
+            <input type="text" id="hostel" placeholder="Enter Your New Hostel" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">New Password:</label>
+            <input type="text" id="password" placeholder="Enter Your New Password" required>
+          </div>
+          
+          <div class="form-group">
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+
+    <script src="updateInfo.js"></script>
+</body>
+</html>

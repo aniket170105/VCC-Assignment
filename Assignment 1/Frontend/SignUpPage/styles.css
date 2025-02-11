@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #121212; 
+    color: #ffffff;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #1f1f1f;
+    border-bottom: 1px solid #333;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #aaaaaa;
+    font-weight: 500;
+}
+
+.nav-item:hover {
+    color: #ffffff;
+}
+
+.hero-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem;
+    /* height: calc(100vh - 160px); Full screen minus navbar and footer */
+}
+
+.hero-text {
+    max-width: 50%;
+    font-size: 1.2rem;
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #fff; /* White headline */
+}
+
+.hero-text p {
+    font-size: 1rem;
+    color: #bbb; /* Light gray text */
+    margin-bottom: 2rem;
+}
+
+.hero-form {
+    background-color: #1e1e1e; /* Dark form background */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    width: auto;
+}
+
+.hero-form h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: #fff; /* White heading */
+}
+
+.hero-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #bbb; /* Light gray text */
+}
+
+.hero-form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #333; /* Dark gray border */
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #121212; /* Dark input background */
+    color: #e0e0e0; /* Light text */
+}
+
+.hero-form input::placeholder {
+    color: #666; /* Placeholder color */
+}
+
+.hero-form button {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #5865f2; /* Accent color */
+    color: #fff; /* White text */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hero-form button:hover {
+    background-color: #4752c4; /* Slightly darker accent */
+}
+
+.note {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: #888; /* Muted text */
+}
+
+.footer {
+    padding: 1.5rem 2rem;
+    background-color: #1f1f1f;
+    border-top: 1px solid #333;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icon {
+    text-decoration: none;
+    color: #5865f2;
+    font-weight: bold;
+}
+
+.social-icon:hover {
+    color: #ffffff;
+}

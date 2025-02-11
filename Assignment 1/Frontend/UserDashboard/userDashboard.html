@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="userDashboard.css">
+
+    <script>
+        window.onload = async function () {
+            const userToken = sessionStorage.getItem('sessionToken');
+            if(adminToken){
+                console.log('User is logged in');
+                try{
+                    const response = await fetch('http://192.168.94.128:8082/auth/v1/refreshToken', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            token : `${userToken}`
+                        }),
+                    });
+                    if(response.ok){
+                        const {accessToken, token} = await response.json();
+                        window.localStorage.setItem('jwtToken', accessToken);
+                        window.localStorage.setItem('sessionToken', token);
+                    }
+                    else{
+                        window.location.href = '../HomePage/home.html';
+                    }
+                }
+                catch(err){
+                    console.log(err);
+                    window.location.href = '../HomePage/home.html';
+                }
+            } else {
+                window.location.href = '../HomePage/home.html';
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="header">
+        <!-- <img src="logo.png" alt="Online Laundry Logo"> -->
+        <h1>Online Laundry IITJ</h1>
+    </div>
+
+    <div class="content">
+        <div class="info">
+            <!-- <p><strong>Phone Number:</strong> </p> -->
+            <p><strong>Name:</strong> </p>
+            <p><strong>Email:</strong> </p>
+            <p><strong>Hostel:</strong> </p>
+            <button><a href="#" style="color: black; text-decoration: none;">Update</a></button>
+            <button class = "log-out">Log Out</button>
+        </div>
+        <div class="laundry">
+            <h2>Got Dirty Clothes? Give them for Laundry.</h2>
+            <!-- <p><strong>Availability:</strong> </p> -->
+            <button><a style="color: black; text-decoration: none;" href="userSubmit.html">Submit Clothes</a></button>
+        </div>
+    </div>
+
+    <div class="history-section">
+        <h2>Past Laundry History</h2>
+
+        <!-- Example History Item -->
+        <div class="history-item">
+            <h3>Laundry ID: 12345</h3>
+            <p>Status: Out for Delivery</p>
+            <p>Submitted Time: 2025-01-10 14:00</p>
+
+            <!-- Interactive Status Tracker -->
+            <div class="status-tracker">
+                <div class="step" data-step="1">
+                    <div class="circle"></div>
+                    <p>Shipping Soon</p>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="circle"></div>
+                    <p>Shipped</p>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="circle"></div>
+                    <p>On the Way</p>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="circle"></div>
+                    <p>Out for Delivery</p>
+                </div>
+                <div class="step" data-step="5">
+                    <div class="circle"></div>
+                    <p>Delivered</p>
+                </div>
+            </div>
+
+            <div class="details-section">
+                <p>Message: This is an example message for the laundry.</p>
+
+                <div class="images">
+                    <h4>Pants Photos:</h4>
+                    <div class="image-gallery" id="pants-gallery">
+                        <!-- Dynamic Pants Images -->
+                        <img src="pants1.jpg" alt="Pants 1">
+                        <img src="pants2.jpg" alt="Pants 2">
+                    </div>
+
+                    <h4>Shirts Photos:</h4>
+                    <div class="image-gallery" id="shirts-gallery">
+                        <!-- Dynamic Shirts Images -->
+                        <img src="shirts1.jpg" alt="Shirts 1">
+                        <img src="shirts2.jpg" alt="Shirts 2">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="userDashboard.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="adminDashboard.css">
+    
+    <script>
+        window.onload = async function () {
+            const adminToken = sessionStorage.getItem('sessionTokenAdmin');
+            if(adminToken){
+                console.log(sessionStorage.getItem('jwtTokenAdmin'));
+                console.log('Admin is logged in');
+                console.log(adminToken);
+                try{
+                    const response = await fetch('http://192.168.94.128:8082/auth/v1/refreshToken', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            token : `${adminToken}`
+                        }),
+                    });
+                    if(response.ok){
+                        const {accessToken, token} = await response.json();
+                        sessionStorage.setItem('jwtTokenAdmin', accessToken);
+                        sessionStorage.setItem('sessionTokenAdmin', token);
+                    }
+                    else{
+                        console.log("Error while Refreshing Session Token");
+                        window.location.href = '../HomePage/home.html';
+                    }
+                }
+                catch(err){
+                    console.log(err);
+                    window.location.href = '../HomePage/home.html';
+                }
+            } else {
+                window.location.href = '../HomePage/home.html';
+            }
+        }
+    </script>
+    
+</head>
+<body>
+    <!-- <div class="header">
+        <button class="logout-btn" id = "logout-btn">Logout</button>
+    </div> -->
+    <div class="search-section">
+        <input type="text" id="search-bar" placeholder="Search by Laundry ID" />
+        <button class="search-button" id="search-btn">Search</button>
+    </div>
+
+    <div class="history-section">
+        <!-- Example History Item -->
+        <!-- <div class="history-item" data-id="12345" onclick="toggleDetails(1)">
+            <h3>Laundry ID: 12345</h3>
+            <p>Status: Out for Delivery</p>
+            <p>Submitted Time: 2025-01-10 14:00</p>
+
+            <div class="status-tracker">
+                <div class="step" data-step="1">
+                    <div class="circle"></div>
+                    <p>Shipping Soon</p>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="circle"></div>
+                    <p>Shipped</p>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="circle"></div>
+                    <p>On the Way</p>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="circle"></div>
+                    <p>Out for Delivery</p>
+                </div>
+                <div class="step" data-step="5">
+                    <div class="circle"></div>
+                    <p>Delivered</p>
+                </div>
+            </div>
+
+            <div class="details-section">
+                <p>Message: This is an example message for the laundry.</p>
+
+                <div class="images">
+                    <h4>Pants Photos:</h4>
+                    <div class="image-gallery" id="pants-gallery">
+                        <img src="pants1.jpg" alt="Pants 1">
+                        <img src="pants2.jpg" alt="Pants 2">
+                    </div>
+
+                    <h4>Shirts Photos:</h4>
+                    <div class="image-gallery" id="shirts-gallery">
+                        
+                        <img src="shirts1.jpg" alt="Shirts 1">
+                        <img src="shirts2.jpg" alt="Shirts 2">
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+
+    <script src="adminDashboard.js"></script>
+</body>
+</html>

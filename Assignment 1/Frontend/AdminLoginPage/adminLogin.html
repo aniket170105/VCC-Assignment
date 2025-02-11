@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="adminLogin.css">
+    <script>
+        const isUserLogeedIn = window.localStorage.getItem('jwtToken');
+        if(isUserLogeedIn) {
+            window.location.href = '../UserDashboard/userDashboard.html';
+        }
+
+        const isAdminLoggedIn = sessionStorage.getItem('jwtTokenAdmin');
+        if(isAdminLoggedIn) {
+            window.location.href = '../AdminDashboard/adminDashboard.html';
+        }
+    </script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-text">Online Laundry</span>
+        </div>
+        <nav class="nav-links">
+            <a href="../HomePage/home.html" class="nav-item">Home</a>
+            <a href="../SignUpPage/signup.html" class="nav-item">Sign Up</a>
+            <a href="../LoginPage/login.html" class="nav-item">Login</a>
+            <a href="../AdminLoginPage/adminLogin.html" class="nav-item">Admin</a>
+        </nav>
+    </header>
+    <main class="hero-section">
+        <div class="hero-form">
+            <h3>Admin Log In</h3>
+            <form id = "admin-login-form">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="adminLogin.js"></script>
+</body>
+</html>
